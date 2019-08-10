@@ -42,6 +42,7 @@
   "proxy": "https://us-central1-memorize-paragraph-89b66.cloudfunctions.net/api",
   "devDependencies": {
     "@storybook/addon-actions": "^5.1.10",
+    "@storybook/addon-backgrounds": "^5.1.10",
     "@storybook/addon-knobs": "^5.1.10",
     "@storybook/addon-links": "^5.1.10",
     "@storybook/addons": "^5.1.10",

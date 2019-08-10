@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface ButtonProps {
   /**
@@ -18,18 +18,48 @@ interface ButtonProps {
   children: string;
 }
 
-const StyledButton = styled.button<ButtonProps>`
+const buttonStyle = css`
   display: inline-block;
   border: none;
-  padding: 0 0;
   margin: 0;
   text-decoration: none;
-  background: #0069ed;
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: bold;
+  border-radius: ${props => props.theme.borderRadius.small};
+  font-family: "Montserrat";
   cursor: pointer;
   text-align: center;
+  line-height: 1em;
+`;
+
+const defaultButtonStyle = css`
+  background: ${props => props.theme.color.secondary};
+  color: ${props => props.theme.color.fontLight};
+  font-weight: bold;
+  box-shadow: ${props => props.theme.boxShadow.default};
+`;
+
+const invertedButtonStyle = css`
+  background: transparent;
+  color: ${props => props.theme.color.secondary};
+  font-weight: 500;
+  text-shadow: ${props => props.theme.boxShadow.blur};
+`;
+
+const defaultSizeStyle = css`
+  padding: 14px 18px;
+  font-size: ${props => props.theme.fontSize.mid};
+`;
+
+const smallSizeStyle = css`
+  padding: 8px 16px;
+  font-size: ${props => props.theme.fontSize.default};
+  font-weight: 500;
+`;
+
+const StyledButton = styled.button<ButtonProps>`
+  ${buttonStyle}
+  ${props =>
+    props.buttonType === "default" ? defaultButtonStyle : invertedButtonStyle}
+    ${props => (props.size === "default" ? defaultSizeStyle : smallSizeStyle)}
 `;
 
 const Button: FC<ButtonProps> = ({
