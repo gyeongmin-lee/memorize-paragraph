@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { fontPrimary } from "../../../styles/styles";
 
 interface SeparatorProps {
   /**
@@ -21,7 +22,7 @@ const StyledSeparator = styled.div`
   grid-gap: ${props => props.theme.spacing.small};
   align-items: center;
   color: ${props => props.theme.color.fontLight};
-  font-family: "Montserrat";
+  ${fontPrimary}
   font-size: ${props => props.theme.fontSize.mid};
   text-shadow: ${props => props.theme.boxShadow.blur};
 `;

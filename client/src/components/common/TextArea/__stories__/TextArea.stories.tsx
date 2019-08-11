@@ -13,6 +13,7 @@ stories.add("TextArea", () => (
       <TextArea
         placeholder={text("placeholder", "Type something")}
         rows={number("rows", 15)}
+        helpText={text("helpText", "270 words")}
       />
     </Layout>
   </Background>

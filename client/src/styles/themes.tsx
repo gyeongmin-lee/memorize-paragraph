@@ -25,5 +25,10 @@ export default {
     default: "14px",
     mid: "18px",
     large: "24px"
+  },
+  lineHeight: {
+    default: `${14 * 1.6}px`,
+    mid: `${18 * 1.6}px`,
+    large: `${24 * 1.6}px`
   }
 };

@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled, { css } from "styled-components";
+import { fontPrimary } from "../../../styles/styles";
 
 interface ButtonProps {
   /**
@@ -24,7 +25,7 @@ const buttonStyle = css`
   margin: 0;
   text-decoration: none;
   border-radius: ${props => props.theme.borderRadius.small};
-  font-family: "Montserrat";
+  ${fontPrimary}
   cursor: pointer;
   text-align: center;
   line-height: 1em;
