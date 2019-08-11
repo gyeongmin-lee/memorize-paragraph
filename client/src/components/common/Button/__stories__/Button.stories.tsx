@@ -1,9 +1,12 @@
+import centered from "@storybook/addon-centered/react";
+import { select, text } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
-import { text, select } from "@storybook/addon-knobs";
 
 const stories = storiesOf("Button", module);
+
+stories.addDecorator(centered);
 
 stories.add("Button", () => (
   <Button
