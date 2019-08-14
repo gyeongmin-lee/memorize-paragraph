@@ -28,6 +28,10 @@ const Header = styled.div`
   align-items: center;
 `;
 
+const Paragraph = styled.div`
+  display: block;
+`;
+
 interface ParagraphAreaProps {
   header?: ReactNode;
 }
@@ -36,7 +40,7 @@ const ParagraphArea: FC<ParagraphAreaProps> = ({ header, children }) => {
   return (
     <Wrapper>
       {header ? <Header>{header}</Header> : null}
-      {children}
+      <Paragraph>{children}</Paragraph>
     </Wrapper>
   );
 };

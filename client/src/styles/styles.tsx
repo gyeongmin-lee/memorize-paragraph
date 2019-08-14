@@ -8,4 +8,10 @@ const fontSecondary = css`
   font-family: "Open Sans";
 `;
 
-export { fontPrimary, fontSecondary };
+const wordTextStyle = css`
+  ${fontPrimary};
+  font-size: ${props => props.theme.fontSize.default};
+  line-height: ${props => props.theme.lineHeight.default};
+`;
+
+export { fontPrimary, fontSecondary, wordTextStyle };

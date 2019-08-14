@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 
-const StyledLayout = styled.div`
-  max-width: 716px;
+const StyledLayout = styled.div<LayoutProps>`
+  max-width: ${props => (props.layoutType === "default" ? 716 : 433)}px;
   width: 100%;
   display: grid;
   grid-gap: ${props => props.theme.spacing.small};
@@ -12,8 +12,16 @@ const StyledLayout = styled.div`
   position: relative;
 `;
 
-const Layout: FC = ({ children }) => {
-  return <StyledLayout>{children}</StyledLayout>;
+interface LayoutProps {
+  /**
+   * Type of the layout.
+   * @default default
+   */
+  layoutType?: "default" | "narrow";
+}
+
+const Layout: FC<LayoutProps> = ({ children, layoutType = "default" }) => {
+  return <StyledLayout layoutType={layoutType}>{children}</StyledLayout>;
 };
 
 export default Layout;
