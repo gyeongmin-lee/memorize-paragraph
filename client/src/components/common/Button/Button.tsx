@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import styled, { css } from "styled-components";
 import { fontPrimary } from "../../../styles/styles";
 
@@ -17,10 +17,19 @@ interface ButtonProps {
    * Label for the button
    */
   children: string;
+  /**
+   * Element to display at the left of the button.
+   */
+  leftNode?: ReactNode;
+  /**
+   * Element to display at the right of the button.
+   */
+  rightNode?: ReactNode;
 }
 
 const buttonStyle = css`
-  display: inline-block;
+  display: flex;
+  align-items: center;
   border: none;
   margin: 0;
   text-decoration: none;
@@ -56,21 +65,35 @@ const smallSizeStyle = css`
   font-weight: 500;
 `;
 
-const StyledButton = styled.button<ButtonProps>`
+const StyledButton = styled.button<{ buttonType?: string; size?: string }>`
   ${buttonStyle}
   ${props =>
     props.buttonType === "default" ? defaultButtonStyle : invertedButtonStyle}
     ${props => (props.size === "default" ? defaultSizeStyle : smallSizeStyle)}
 `;
 
+const LeftNode = styled.div`
+  margin: -12px 4px -12px -8px;
+  display: flex;
+`;
+
+const RightNode = styled.div`
+  margin: -12px -8px -12px 4px;
+  display: flex;
+`;
+
 const Button: FC<ButtonProps> = ({
   size = "default",
   buttonType = "default",
-  children
+  children,
+  leftNode,
+  rightNode
 }) => {
   return (
     <StyledButton size={size} buttonType={buttonType}>
+      {leftNode && <LeftNode>{leftNode}</LeftNode>}
       {children}
+      {rightNode && <RightNode>{rightNode}</RightNode>}
     </StyledButton>
   );
 };
