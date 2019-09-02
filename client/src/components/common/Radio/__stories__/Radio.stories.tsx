@@ -10,6 +10,8 @@ import centered from "@storybook/addon-centered/react";
 
 const stories = storiesOf("Radio", module);
 
+stories.addDecorator(centered);
+
 const RadioGroup: FC<{ name: string; defaultValue?: string }> = ({
   name,
   defaultValue
@@ -64,16 +66,14 @@ stories.add("Radio group", () => (
   </Background>
 ));
 
-stories
-  .add("Radio", () => {
-    return (
-      <Radio
-        name={text("name", "radio")}
-        value={text("value", "radio")}
-        selectedValue={text("selectedValue", "radio")}
-        label={text("label", "radio el")}
-        onChange={action("onChange")}
-      />
-    );
-  })
-  .addDecorator(centered);
+stories.add("Radio", () => {
+  return (
+    <Radio
+      name={text("name", "radio")}
+      value={text("value", "radio")}
+      selectedValue={text("selectedValue", "radio")}
+      label={text("label", "radio el")}
+      onChange={action("onChange")}
+    />
+  );
+});
