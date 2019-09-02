@@ -25,6 +25,10 @@ interface ButtonProps {
    * Element to display at the right of the button.
    */
   rightNode?: ReactNode;
+  /**
+   * Class name to pass down
+   */
+  className?: string;
 }
 
 const buttonStyle = css`
@@ -87,10 +91,11 @@ const Button: FC<ButtonProps> = ({
   buttonType = "default",
   children,
   leftNode,
-  rightNode
+  rightNode,
+  className
 }) => {
   return (
-    <StyledButton size={size} buttonType={buttonType}>
+    <StyledButton className={className} size={size} buttonType={buttonType}>
       {leftNode && <LeftNode>{leftNode}</LeftNode>}
       {children}
       {rightNode && <RightNode>{rightNode}</RightNode>}

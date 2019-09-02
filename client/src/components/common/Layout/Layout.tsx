@@ -9,6 +9,7 @@ const StyledLayout = styled.div<LayoutProps>`
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
   margin-top: 120px;
+  height: min-content;
   position: relative;
 `;
 
