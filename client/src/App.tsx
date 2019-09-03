@@ -7,6 +7,7 @@ import NavBar from "./components/Navbar/NavBar";
 import Submission from "./components/Submission/Submission";
 import themes from "./styles/themes";
 import Login from "./components/Login/Login";
+import Signup from "./components/Signup/Signup";
 
 const App = () => {
   return (
@@ -14,11 +15,12 @@ const App = () => {
       <BrowserRouter>
         <Normalize />
         <ThemeProvider theme={themes}>
-          <Background>
+          <Background hideStrikeOnMobile>
             <NavBar />
             <Switch>
               <Route path="/" exact component={Submission} />
               <Route path="/login" component={Login} />
+              <Route path="/signup" component={Signup} />
             </Switch>
           </Background>
         </ThemeProvider>

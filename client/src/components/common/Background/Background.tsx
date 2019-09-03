@@ -1,6 +1,14 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import Strikes from "./Strikes";
+import { device } from "../../../styles/breakpoints";
+
+interface BackgroundProps {
+  /**
+   * Do not display strikes on mobile
+   */
+  hideStrikeOnMobile?: boolean;
+}
 
 const Container = styled.div`
   display: flex;
@@ -32,11 +40,20 @@ const RightStrike = styled(Strikes)`
   top: 14vh;
 `;
 
-const Background: FC = ({ children }) => {
+const MobileWrapper = styled.div<{ hideStrikeOnMobile?: boolean }>`
+  display: ${props => (props.hideStrikeOnMobile ? "none" : "contents")};
+  @media ${device.tabletUp} {
+    display: contents;
+  }
+`;
+
+const Background: FC<BackgroundProps> = ({ children, hideStrikeOnMobile }) => {
   return (
     <Container>
-      <LeftStrike />
-      <RightStrike />
+      <MobileWrapper hideStrikeOnMobile={hideStrikeOnMobile}>
+        <LeftStrike />
+        <RightStrike />
+      </MobileWrapper>
       {children}
     </Container>
   );

@@ -11,7 +11,7 @@ const UploadWrapper = styled.div`
   justify-content: center;
   padding: ${props => props.theme.spacing.medium} 0;
   border-radius: ${props => props.theme.borderRadius.default};
-  border: 1px solid ${props => props.theme.color.fontLight};
+  border: 1px dashed ${props => props.theme.color.fontLight};
 `;
 
 const UploadFile = () => {
