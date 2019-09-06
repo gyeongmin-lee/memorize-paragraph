@@ -5,7 +5,7 @@ export interface UserModel {
   errors: {};
   userId: string | null;
   userName: string | null;
-  paragraphs: Paragraph[] | null;
+  paragraphs: Paragraph[] | [];
 }
 
 const user: UserModel = {
@@ -13,7 +13,7 @@ const user: UserModel = {
   errors: {},
   userId: null,
   userName: null,
-  paragraphs: null
+  paragraphs: []
 };
 
 export default user;
