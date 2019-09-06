@@ -1,8 +1,8 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode, ButtonHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 import { fontPrimary } from "../../../styles/styles";
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Size of the button
    * @default default
@@ -92,10 +92,16 @@ const Button: FC<ButtonProps> = ({
   children,
   leftNode,
   rightNode,
-  className
+  className,
+  ...buttonProps
 }) => {
   return (
-    <StyledButton className={className} size={size} buttonType={buttonType}>
+    <StyledButton
+      className={className}
+      size={size}
+      buttonType={buttonType}
+      {...buttonProps}
+    >
       {leftNode && <LeftNode>{leftNode}</LeftNode>}
       {children}
       {rightNode && <RightNode>{rightNode}</RightNode>}

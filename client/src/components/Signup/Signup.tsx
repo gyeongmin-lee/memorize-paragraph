@@ -1,28 +1,36 @@
 import ArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
-import React from "react";
+import React, { FC, FormEvent } from "react";
+import { RouteComponentProps } from "react-router";
 import styled from "styled-components";
 import Button from "../common/Button/Button";
 import FormInput from "../common/FormInput/FormInput";
 import Layout from "../common/Layout/Layout";
 import Typography from "../common/Typography/Typography";
 
-const StyledForm = styled.form`
+interface SignupProps extends RouteComponentProps {}
+
+export const StyledForm = styled.form`
   display: grid;
   grid-gap: ${props => props.theme.spacing.small};
 `;
 
-const ButtonGroup = styled.div`
+export const ButtonGroup = styled.div`
   display: grid;
   grid-template-columns: 1fr max-content 1fr;
   justify-content: center;
   align-items: center;
 `;
 
-const LeftButton = styled(Button)`
+export const LeftButton = styled(Button)`
   margin-right: auto;
 `;
 
-const Signup = () => {
+const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  console.log("submitted???");
+};
+
+const Signup: FC<SignupProps> = ({ history }) => {
   return (
     <Layout layoutType="narrow">
       <Typography align="center" size="mid">
@@ -31,7 +39,7 @@ const Signup = () => {
         </Typography>{" "}
         to save your paragraphs
       </Typography>
-      <StyledForm>
+      <StyledForm onSubmit={handleSubmit}>
         <FormInput
           label="Email"
           type="email"
@@ -46,10 +54,17 @@ const Signup = () => {
         />
         <FormInput label="Display Name" name="displayname" />
         <ButtonGroup>
-          <LeftButton buttonType="inverted" leftNode={<ArrowLeft />}>
+          <LeftButton
+            buttonType="inverted"
+            type="button"
+            leftNode={<ArrowLeft />}
+            onClick={history.goBack}
+          >
             Back
           </LeftButton>
-          <Button>Sign Up</Button>
+          <Button type="submit" value="Submit">
+            Sign Up
+          </Button>
         </ButtonGroup>
         <Typography align="center" color="secondary" size="default">
           Existing Display name. Please enter another name.
